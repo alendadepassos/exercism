@@ -1,23 +1,18 @@
-export function toRna(dna:string) {
-    
-  let rna = dna.split('');
- for (let i = 0; i <= rna.length; i++) {
-    switch(dna[i]){
-      case 'C':
-        rna[i] = 'G'
-      break;
-      case 'G':
-        rna[i] = 'C'
-      break;
-      case 'A':
-        rna[i] = 'U'
-      break;
-      case 'T':
-        rna[i] = 'A'
-      break;
-      default:
-        rna[i] = ''
-    }
+function convertLetter(dnaLetter: string): string {
+
+  switch (dnaLetter) {
+    case "A": return "U";
+    case "C": return "G";
+    case "G": return "C";
+    case "T": return "A";
   }
-return rna.join('');
+  throw Error("Invalid input DNA.");
+}
+
+export function toRna(dnaString: string): string {
+  const rnaString = dnaString
+    .split("")
+    .map((letter) => convertLetter(letter))
+    .join("");
+  return rnaString;
 }
